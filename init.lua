@@ -5,571 +5,484 @@ stoneworks = {}
 -- Register stoneworks.
 -- Node will be called stoneworks:arches_<subname>
 
-function stoneworks.register_arches(subname, recipeitem, groups, images, description, sounds)
-	groups.arches = 1
-minetest.register_node(":stoneworks:arches_low_wall" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.5, 0.5, 0.125, 0.5},
-		}
-	}
-})
 
-minetest.register_node(":stoneworks:arches_high" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, 0.5},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, 0.5},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_low" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, 0.5},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, 0.5},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_high_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, 0.0625, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, 0.1875, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, 0.375, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
-			{0.3125, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, 0.4375, 0.5, -0.3125, 0.5},
-			{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_low_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, 0.0625, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, 0.1875, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, 0.375, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
-			{0.3125, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, 0.4375, 0.5, -0.3125, 0.5},
-			{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_high_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
-			{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_low_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
-			{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_high_corner" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, 0.5, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, 0.5, -0.3125, 0.5},
-			{0.375, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
-			{-0.5, -0.1875, 0.1875, 0.5, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:arches_low_corner" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
-			{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
-			{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
-			{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
-			{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
-			{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
-			{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
-			{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
-			{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
-			{-0.5, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
-			{-0.5, -0.4375, 0.375, 0.5, -0.25, 0.5},
-			{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
-			{-0.5, -0.5, 0.4375, 0.5, -0.3125, 0.5},
-			{0.375, -0.3125, -0.5, 0.5, -0.1875, 0.5},
-			{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
-			{-0.5, -0.1875, 0.1875, 0.5, -0.125, 0.5},
-			{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5},
-		}
-	}
-})
+function stoneworks.reg_recipe(name_, rec, i, num)
+	minetest.register_craft({
+		output = name_,
+		recipe = rec
+	})
+	if num>0 then
+		minetest.register_craft({
+			output=i..' '..tostring(num),
+			recipe={{name_}}
+		})
+	end
 end
 
--- Register stoneworks.
--- Node will be called stoneworks:thin_wall_<subname>
 
-function stoneworks.register_thin_wall(subname, recipeitem, groups, images, description, sounds)
-	groups.thin_wall = 1
-minetest.register_node("stoneworks:thin_wall_high" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
-		}
-	}
-})
+function stoneworks.register_arches_and_thin_wall(subname, recipeitem, groups, images, 
+	description, junk, sounds)
 
-minetest.register_node(":stoneworks:thin_wall_low" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_high_corner" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.1875, 0.5, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.1875},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_low_corner" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-			{-0.1875, -0.5, -0.1875, 0.1875, 0.125, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_high_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.1875},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_high_low_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_low_T" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
-			{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_high_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_high_low_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-			{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_low_quad" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.5},
-			{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_high_arch" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.1875, 0.5, 0.5, 0.1875},
-			{0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
-			{-0.5, -0.125, -0.1875, -0.0625, -0.0625, 0.1875},
-			{-0.5, -0.1875, -0.1875, -0.1875, -0.125, 0.1875},
-			{0.1875, -0.1875, -0.1875, 0.5, -0.125, 0.1875},
-			{0.3125, -0.3125, -0.1875, 0.5, -0.1875, 0.1875},
-			{-0.5, -0.3125, -0.1875, -0.3125, -0.1875, 0.1875},
-			{-0.5, -0.4375, -0.1875, -0.375, -0.25, 0.1875},
-			{0.375, -0.4375, -0.1875, 0.5, -0.25, 0.1875},
-			{0.4375, -0.5, -0.1875, 0.5, -0.3125, 0.1875},
-			{-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
-		}
-	}
-})
-
-minetest.register_node(":stoneworks:thin_wall_low_arch" .. subname, {
-	description = description,
-	drawtype = "nodebox",
-	tiles = images,
-	paramtype = "light",
-	paramtype2 = "facedir",
-	legacy_facedir_simple = true,
-	groups = groups,
-	is_ground_content = false,
-	sounds = sounds,
-	node_box = {
-		type = "fixed",
-		fixed = {
-			{-0.5, -0.0625, -0.1875, 0.5, 0.125, 0.1875},
-			{0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
-			{-0.5, -0.125, -0.1875, -0.0625, -0.0625, 0.1875},
-			{-0.5, -0.1875, -0.1875, -0.1875, -0.125, 0.1875},
-			{0.1875, -0.1875, -0.1875, 0.5, -0.125, 0.1875},
-			{0.3125, -0.3125, -0.1875, 0.5, -0.1875, 0.1875},
-			{-0.5, -0.3125, -0.1875, -0.3125, -0.1875, 0.1875},
-			{-0.5, -0.4375, -0.1875, -0.375, -0.25, 0.1875},
-			{0.375, -0.4375, -0.1875, 0.5, -0.25, 0.1875},
-			{0.4375, -0.5, -0.1875, 0.5, -0.3125, 0.1875},
-			{-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
-		}
-	}
-})
+function reg_node(namer,grouper,fixer)
+	local a,b, desc
+	a,b=string.find(description, ' Arches')
+	desc=string.sub(description,1, a)
+	if grouper=='a' then
+		groups.arches = 1
+		desc=desc..'Arch'
+	elseif grouper=='w' then
+		groups.thin_wall = 1
+		desc=desc..'Thin Wall'
+	else
+		desc=desc..'Mini'
+	end
+		minetest.register_node(namer, {
+			description = desc,
+			drawtype = "nodebox",
+			tiles = images,
+			paramtype = "light",
+			paramtype2 = "facedir",
+			legacy_facedir_simple = true,
+			groups = groups,
+			is_ground_content = false,
+			sounds = sounds,
+			node_box = {
+				type = "fixed",
+				fixed = fixer
+			}
+		})
 end
 
--- Arches/thin wall registration function.
--- Nodes will be called stoneworks:{arches,thin_wall}_<subname>
+local i,n = "stoneworks:mini_" .. subname,''
+local fixer = {
+	{-0.1875, -0.1875, -0.1875, 0.1875, 0.1875, 0.1875}
+	}
+reg_node(i,'i',fixer)
+minetest.register_craft({
+	type = "shapeless",
+	output = i.. ' 54',
+	recipe = {recipeitem,recipeitem}
+})
 
-function stoneworks.register_arches_and_thin_wall(subname, recipeitem, groups, images,desc_arches, desc_thin_wall, sounds)
-	stoneworks.register_arches(subname, recipeitem, groups, images, desc_arches, sounds)
-	stoneworks.register_thin_wall(subname, recipeitem, groups, images, desc_thin_wall, sounds)
+-- stoneworks.reg_dressed(subname, i, recipeitem, groups, images, description, sounds)
+
+
+local namer="stoneworks:thin_wall_high_arch" .. subname
+local fixer={
+	{-0.5, -0.0625, -0.1875, 0.5, 0.5, 0.1875},
+	{0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
+	{-0.5, -0.125, -0.1875, -0.0625, -0.0625, 0.1875},
+	{-0.5, -0.1875, -0.1875, -0.1875, -0.125, 0.1875},
+	{0.1875, -0.1875, -0.1875, 0.5, -0.125, 0.1875},
+	{0.3125, -0.3125, -0.1875, 0.5, -0.1875, 0.1875},
+	{-0.5, -0.3125, -0.1875, -0.3125, -0.1875, 0.1875},
+	{-0.5, -0.4375, -0.1875, -0.375, -0.25, 0.1875},
+	{0.375, -0.4375, -0.1875, 0.5, -0.25, 0.1875},
+	{0.4375, -0.5, -0.1875, 0.5, -0.3125, 0.1875},
+	{-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{i,i,i},{i,i,i},{i,n,i}},i,8)
+local hi=namer
+
+
+namer="stoneworks:thin_wall_low_arch" .. subname
+fixer={
+	{-0.5, -0.0625, -0.1875, 0.5, 0.125, 0.1875},
+	{0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
+	{-0.5, -0.125, -0.1875, -0.0625, -0.0625, 0.1875},
+	{-0.5, -0.1875, -0.1875, -0.1875, -0.125, 0.1875},
+	{0.1875, -0.1875, -0.1875, 0.5, -0.125, 0.1875},
+	{0.3125, -0.3125, -0.1875, 0.5, -0.1875, 0.1875},
+	{-0.5, -0.3125, -0.1875, -0.3125, -0.1875, 0.1875},
+	{-0.5, -0.4375, -0.1875, -0.375, -0.25, 0.1875},
+	{0.375, -0.4375, -0.1875, 0.5, -0.25, 0.1875},
+	{0.4375, -0.5, -0.1875, 0.5, -0.3125, 0.1875},
+	{-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{i,i,i},{i,n,i}},i,5)
+local lo=namer
+
+
+namer="stoneworks:arches_lower_wall" .. subname
+fixer={
+	{-0.5, -0.5, -0.5, 0.5, -0.125, 0.5},
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{i,i,i},{i,i,i},{i,i,i}},i,9)
+local f1=namer
+
+
+namer="stoneworks:arches_low_wall" .. subname
+fixer={
+	{-0.5, -0.5, -0.5, 0.5, 0.125, 0.5},
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{f1,f1}},i,18)
+local f2=namer
+
+
+namer="stoneworks:thin_wall_lower_quad" .. subname
+fixer={
+	{-0.1875, -0.5, -0.5, 0.1875, -0.125, 0.5},
+	{-0.5, -0.5, -0.1875, 0.5, -0.125, 0.1875},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{n,i,n},{i,i,i},{n,i,n}},i,5)
+local q1=namer
+
+
+namer="stoneworks:thin_wall_low_quad" .. subname
+fixer={
+	{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.5},
+	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{q1},{q1}},i,10)
+local q2=namer
+
+
+namer="stoneworks:thin_wall_high_quad" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
+	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{q1},{q1},{q1}},i,15)
+stoneworks.reg_recipe(namer,{{q2},{q1}},i,0)
+stoneworks.reg_recipe(namer,{{q1},{q2}},i,0)
+
+
+namer="stoneworks:thin_wall_high_low_quad" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{q1},{q1},{i}},i,11)
+stoneworks.reg_recipe(namer,{{q2},{i}},i,0)
+
+
+namer="stoneworks:thin_wall_lower_T" .. subname
+fixer={
+	{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
+	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{i,i,i},{n,i,n}},i,4)
+local t1=namer
+
+
+namer="stoneworks:thin_wall_low_T" .. subname
+fixer={
+	{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
+	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{t1},{t1}},i,8)
+local t2=namer
+
+
+namer="stoneworks:thin_wall_high_T" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
+	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.1875},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{t2},{t1}},i,12)
+stoneworks.reg_recipe(namer,{{t1},{t2}},i,0)
+stoneworks.reg_recipe(namer,{{t1},{t1},{t1}},i,0)
+
+
+namer="stoneworks:thin_wall_lower_corner" .. subname
+fixer={
+	{-0.1875, -0.5, -0.1875, 0.5, -0.125, 0.1875},
+	{-0.1875, -0.5, -0.1875, 0.1875, -0.125, 0.5},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{i,n},{i,i}},i,3)
+local c1=namer
+
+
+namer="stoneworks:thin_wall_low_corner" .. subname
+fixer={
+	{-0.1875, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+	{-0.1875, -0.5, -0.1875, 0.1875, 0.125, 0.5},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{c1},{c1}},i,6)
+local c2=namer
+
+
+namer="stoneworks:thin_wall_high_corner" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.1875, 0.5, 0.1875},
+	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.1875},
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{c1},{c1},{c1}},i,9)
+stoneworks.reg_recipe(namer,{{c2},{c1}},i,0)
+stoneworks.reg_recipe(namer,{{c1},{c2}},i,0)
+
+
+namer="stoneworks:thin_wall_lower" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, -0.125, 0.1875}
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{i,i,i}},i,3)
+local w1=namer
+stoneworks.reg_recipe(f1,{{w1,w1,w1}},i,0)
+
+
+namer="stoneworks:thin_wall_low" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875}
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{w1},{w1}},i,6)
+local w2=namer
+
+
+namer="stoneworks:thin_wall_high" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875}
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{w1},{w1},{w1}},i,9)
+stoneworks.reg_recipe(namer,{{w2},{w1}},i,0)
+stoneworks.reg_recipe(namer,{{w1},{w2}},i,0)
+local w3=namer
+
+
+namer="stoneworks:arches_low_quad" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
+	{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
+	{0.0625, -0.125, 0.0625, 0.5, -0.0625, 0.5},
+	{0.1875, -0.1875, 0.1875, 0.5, -0.125, 0.5},
+	{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
+	{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
+	{0.375, -0.4375, 0.375, 0.5, -0.25, 0.5},
+	{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
+	{0.3125, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
+	{0.4375, -0.5, 0.4375, 0.5, -0.3125, 0.5},
+	{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
+	{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{i,n,i},{n,f1,n},{i,n,i}},i,13)
+local qa1=namer
+
+
+namer="stoneworks:arches_low_corner" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
+	{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
+	{-0.5, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
+	{-0.5, -0.4375, 0.375, 0.5, -0.25, 0.5},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
+	{-0.5, -0.5, 0.4375, 0.5, -0.3125, 0.5},
+	{0.375, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
+	{-0.5, -0.1875, 0.1875, 0.5, -0.125, 0.5},
+	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{n,i},{i,qa1}},i,15)
+
+
+namer="stoneworks:arches_low_T" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
+	{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
+	{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
+	{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
+	{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
+	{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
+	{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{i,qa1}},i,14)
+
+
+namer="stoneworks:arches_high_quad" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
+	{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
+	{0.0625, -0.125, 0.0625, 0.5, -0.0625, 0.5},
+	{0.1875, -0.1875, 0.1875, 0.5, -0.125, 0.5},
+	{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
+	{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
+	{0.375, -0.4375, 0.375, 0.5, -0.25, 0.5},
+	{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
+	{0.3125, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
+	{0.4375, -0.5, 0.4375, 0.5, -0.3125, 0.5},
+	{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
+	{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{f1},{qa1}},i,22)
+local qa2=namer
+
+
+namer="stoneworks:arches_high_corner" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
+	{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
+	{-0.5, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
+	{-0.5, -0.4375, 0.375, 0.5, -0.25, 0.5},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
+	{-0.5, -0.5, 0.4375, 0.5, -0.3125, 0.5},
+	{0.375, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
+	{-0.5, -0.1875, 0.1875, 0.5, -0.125, 0.5},
+	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{n,i},{i,qa2}},i,24)
+
+
+namer="stoneworks:arches_low" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, 0.5},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, 0.5},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, 0.5},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, 0.5},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
+	{0.4375, -0.5, -0.5, 0.5, -0.3125, 0.5},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, 0.5},
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{lo,lo,lo}},i,15)
+stoneworks.reg_recipe(namer,{{i,qa1,i}},i,0)
+
+
+namer="stoneworks:arches_high_T" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, -0.1875},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, -0.3125},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, -0.375},
+	{0.4375, -0.5, -0.5, 0.5, -0.3125, -0.4375},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
+	{-0.5, -0.3125, 0.3125, -0.3125, -0.1875, 0.5},
+	{-0.5, -0.4375, 0.375, -0.375, -0.25, 0.5},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
+	{-0.5, -0.5, 0.4375, -0.4375, -0.3125, 0.5},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
+	{-0.5, -0.1875, 0.1875, -0.1875, -0.125, 0.5},
+	{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{i,qa2}},i,23)
+
+
+namer="stoneworks:arches_high" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, 0.5},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, 0.5},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, 0.5},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, 0.5},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
+	{0.4375, -0.5, -0.5, 0.5, -0.3125, 0.5},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, 0.5},
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{hi,hi,hi}},i,24)
+stoneworks.reg_recipe(namer,{{i,qa2,i}},i,0)
+
+
+--turn back to blocks
+minetest.register_craft({
+	type = "shapeless",
+	output = recipeitem,
+	recipe = {f1,f1,f1}
+})
+
+minetest.register_craft({
+	type = "shapeless",
+	output = recipeitem,
+	recipe = {w3,w3,w3}
+})
+
 end
+
+
+
 
 -- Register arches and thin_wall
-
 stoneworks.register_arches_and_thin_wall("wood", "default:wood",
 		{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 		{"default_wood.png"},
@@ -828,6 +741,7 @@ stoneworks.register_arches_and_thin_wall("tinblock", "default:tinblock",
 		"Tin Block Arches",
 		"Tin Block Thin Wall",
 		default.node_sound_stone_defaults())
+
 
 
 minetest.register_node("stoneworks:highironfence", {
