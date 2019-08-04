@@ -195,8 +195,8 @@ stoneworks.reg_recipe(namer,{{w1},{q2}},i,0)
 
 namer="stoneworks:thin_wall_lower_T" .. subname
 fixer={
-	{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
-	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
+	{-0.1875, -0.5, -0.5, 0.1875, -0.125, 0.1875},
+	{-0.5, -0.5, -0.1875, 0.5, -0.125, 0.1875},
 }
 reg_node(namer,'w',fixer)
 stoneworks.reg_recipe(namer,{{i,i,i},{n,i,n}},i,4)
