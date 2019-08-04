@@ -122,6 +122,35 @@ reg_node(namer,'a',fixer)
 stoneworks.reg_recipe(namer,{{f1,f1}},i,18)
 local f2=namer
 
+namer="stoneworks:thin_wall_lower" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, -0.125, 0.1875}
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{i,i,i}},i,3)
+local w1=namer
+stoneworks.reg_recipe(f1,{{w1,w1,w1}},i,0)
+
+
+namer="stoneworks:thin_wall_low" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875}
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{w1},{w1}},i,6)
+local w2=namer
+
+
+namer="stoneworks:thin_wall_high" .. subname
+fixer={
+	{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875}
+}
+reg_node(namer,'w',fixer)
+stoneworks.reg_recipe(namer,{{w1},{w1},{w1}},i,9)
+stoneworks.reg_recipe(namer,{{w2},{w1}},i,0)
+stoneworks.reg_recipe(namer,{{w1},{w2}},i,0)
+local w3=namer
+
 
 namer="stoneworks:thin_wall_lower_quad" .. subname
 fixer={
@@ -160,8 +189,8 @@ fixer={
 	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
 }
 reg_node(namer,'w',fixer)
-stoneworks.reg_recipe(namer,{{q1},{q1},{i}},i,11)
-stoneworks.reg_recipe(namer,{{q2},{i}},i,0)
+stoneworks.reg_recipe(namer,{{w1},{q1},{q1}},i,11)
+stoneworks.reg_recipe(namer,{{w1},{q2}},i,0)
 
 
 namer="stoneworks:thin_wall_lower_T" .. subname
@@ -224,36 +253,6 @@ reg_node(namer,'w',fixer)
 stoneworks.reg_recipe(namer,{{c1},{c1},{c1}},i,9)
 stoneworks.reg_recipe(namer,{{c2},{c1}},i,0)
 stoneworks.reg_recipe(namer,{{c1},{c2}},i,0)
-
-
-namer="stoneworks:thin_wall_lower" .. subname
-fixer={
-	{-0.5, -0.5, -0.1875, 0.5, -0.125, 0.1875}
-}
-reg_node(namer,'w',fixer)
-stoneworks.reg_recipe(namer,{{i,i,i}},i,3)
-local w1=namer
-stoneworks.reg_recipe(f1,{{w1,w1,w1}},i,0)
-
-
-namer="stoneworks:thin_wall_low" .. subname
-fixer={
-	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875}
-}
-reg_node(namer,'w',fixer)
-stoneworks.reg_recipe(namer,{{w1},{w1}},i,6)
-local w2=namer
-
-
-namer="stoneworks:thin_wall_high" .. subname
-fixer={
-	{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875}
-}
-reg_node(namer,'w',fixer)
-stoneworks.reg_recipe(namer,{{w1},{w1},{w1}},i,9)
-stoneworks.reg_recipe(namer,{{w2},{w1}},i,0)
-stoneworks.reg_recipe(namer,{{w1},{w2}},i,0)
-local w3=namer
 
 
 namer="stoneworks:arches_low_quad" .. subname
