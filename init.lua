@@ -474,7 +474,7 @@ reg_node(namer,'a',fixer)
 stoneworks.reg_recipe(namer,{{f1},{w1}},i,12)
 
 
-namer="stoneworks:arches_low_corner_cove" .. subname
+namer="stoneworks:arches_low_cove_corner_outside" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
 	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
@@ -485,7 +485,26 @@ fixer={
 }
 reg_node(namer,'a',fixer)
 stoneworks.reg_recipe(namer,{{f1},{i}},i,10)
-local cc=namer
+local cco=namer
+
+namer="stoneworks:arches_low_cove_corner_inside" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
+	{-0.5, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
+	{-0.5, -0.4375, 0.375, 0.5, -0.25, 0.5},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
+	{-0.5, -0.5, 0.4375, 0.5, -0.3125, 0.5},
+	{0.375, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
+	{-0.5, -0.1875, 0.1875, 0.5, -0.125, 0.5},
+	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{n,f1},{i,w1},{i,n}},i,14)
+local cci=namer
 
 
 namer="stoneworks:arches_high_cove" .. subname
@@ -502,7 +521,7 @@ stoneworks.reg_recipe(namer,{{f1},{f1},{w1}},i,21)
 stoneworks.reg_recipe(namer,{{f2},{w1}},i,0)
 
 
-namer="stoneworks:arches_high_corner_cove" .. subname
+namer="stoneworks:arches_high_cove_corner_outside" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
 	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
@@ -514,8 +533,26 @@ fixer={
 reg_node(namer,'a',fixer)
 stoneworks.reg_recipe(namer,{{f1},{f1},{i}},i,19)
 stoneworks.reg_recipe(namer,{{f2},{i}},i,0)
-stoneworks.reg_recipe(namer,{{f1},{cc}},i,0)
+stoneworks.reg_recipe(namer,{{f1},{cco}},i,0)
 
+namer="stoneworks:arches_high_cove_corner_inside" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},
+	{-0.5, -0.3125, 0.3125, 0.5, -0.1875, 0.5},
+	{-0.5, -0.4375, 0.375, 0.5, -0.25, 0.5},
+	{0.375, -0.4375, -0.5, 0.5, -0.25, 0.5},
+	{-0.5, -0.5, 0.4375, 0.5, -0.3125, 0.5},
+	{0.375, -0.3125, -0.5, 0.5, -0.1875, 0.5},
+	{0.4375, -0.5, -0.5, 0.5, 0, 0.5},
+	{-0.5, -0.1875, 0.1875, 0.5, -0.125, 0.5},
+	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{n,f2},{i,w1},{i,n}},i,14)
+stoneworks.reg_recipe(namer,{{f1},{cci}},i,0)
 
 
 namer="stoneworks:arches_high" .. subname
