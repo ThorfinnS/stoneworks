@@ -5,6 +5,23 @@ stoneworks = {}
 -- Register stoneworks.
 -- Node will be called stoneworks:arches_<subname>
 
+function first2upper(in_)
+	return (in_:gsub("^%l", in_.upper))
+end
+
+function cool_tree_support(in_)
+	local cool_path = minetest.get_modpath(in_)
+	if cool_path then
+		local gif_=in_..'_wood.png'
+		stoneworks.register_arches_and_thin_wall(in_, in_..':wood',
+			{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
+			{gif_},
+			first2upper(in_),
+			in_,
+			default.node_sound_wood_defaults())
+	end
+end
+
 
 function stoneworks.reg_recipe(name_, rec, i, num)
 	minetest.register_craft({
@@ -24,17 +41,19 @@ function stoneworks.register_arches_and_thin_wall(subname, recipeitem, groups, i
 	description, junk, sounds)
 
 function reg_node(namer,grouper,fixer)
-	local a,b, desc
-	a,b=string.find(description, ' Arches')
-	desc=string.sub(description,1, a)
+	local a, desc = 1, description
+	a=string.find(description, ' Arches')
+	if a~= nil then
+		desc=string.sub(description,1, a-1)
+	end
 	if grouper=='a' then
 		groups.arches = 1
-		desc=desc..'Arch'
+		desc=desc..' Arch'
 	elseif grouper=='w' then
 		groups.thin_wall = 1
-		desc=desc..'Thin Wall'
+		desc=desc..' Thin Wall'
 	else
-		desc=desc..'Mini'
+		desc=desc..' Mini'
 	end
 		minetest.register_node(namer, {
 			description = desc,
@@ -63,8 +82,6 @@ minetest.register_craft({
 	output = i.. ' 54',
 	recipe = {recipeitem,recipeitem}
 })
-
--- stoneworks.reg_dressed(subname, i, recipeitem, groups, images, description, sounds)
 
 
 local namer="stoneworks:thin_wall_high_arch" .. subname
@@ -741,7 +758,16 @@ stoneworks.register_arches_and_thin_wall("tinblock", "default:tinblock",
 		"Tin Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-
+cool_tree_support('birch')
+cool_tree_support('cherrytree')
+cool_tree_support('chestnuttree')
+cool_tree_support('clementinetree')
+cool_tree_support('ebony')
+cool_tree_support('jacaranda')
+cool_tree_support('larch')
+cool_tree_support('lemontree')
+cool_tree_support('mahogany')
+cool_tree_support('palm')
 
 minetest.register_node("stoneworks:highironfence", {
 	description = "StoneWorks high ironfence",
