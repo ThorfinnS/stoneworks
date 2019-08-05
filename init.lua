@@ -136,7 +136,7 @@ fixer={
 	{-0.5, -0.5, -0.5, 0.5, 0.125, 0.5},
 }
 reg_node(namer,'a',fixer)
-stoneworks.reg_recipe(namer,{{f1,f1}},i,18)
+stoneworks.reg_recipe(namer,{{f1},{f1}},i,18)
 local f2=namer
 
 namer="stoneworks:thin_wall_lower" .. subname
@@ -206,7 +206,7 @@ fixer={
 	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
 }
 reg_node(namer,'w',fixer)
-stoneworks.reg_recipe(namer,{{w1},{q1},{q1}},i,11)
+stoneworks.reg_recipe(namer,{{w1},{q1},{q1}},i,13)
 stoneworks.reg_recipe(namer,{{w1},{q2}},i,0)
 
 
@@ -459,6 +459,63 @@ fixer={
 }
 reg_node(namer,'a',fixer)
 stoneworks.reg_recipe(namer,{{i,qa2}},i,23)
+
+
+namer="stoneworks:arches_low_cove" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5}, --top slice
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5}, --2nd slice
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5}, --3rd slice
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5}, --4th slice
+	{0.375, -0.4375, -0.5, 0.5, -0.3125, 0.5}, --5th slice
+	{0.4375, -0.5, -0.5, 0.5, -0.4375, 0.5},--6th slice
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{f1},{w1}},i,12)
+
+
+namer="stoneworks:arches_low_corner_cove" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{f1},{i}},i,10)
+local cc=namer
+
+
+namer="stoneworks:arches_high_cove" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},--1
+	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},--2
+	{0.1875, -0.1875, -0.5, 0.5, -0.125, 0.5},--3
+	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},--4
+	{0.375, -0.4375, -0.5, 0.5, -0.3125, 0.5},--5
+	{0.4375, -0.5, -0.5, 0.5, -0.4375, 0.5},--6
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{f1},{f1},{w1}},i,21)
+stoneworks.reg_recipe(namer,{{f2},{w1}},i,0)
+
+
+namer="stoneworks:arches_high_corner_cove" .. subname
+fixer={
+	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
+	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
+	{-0.5, -0.1875, -0.5, -0.1875, -0.125, -0.1875},
+	{-0.5, -0.3125, -0.5, -0.3125, -0.1875, -0.3125},
+	{-0.5, -0.4375, -0.5, -0.375, -0.25, -0.375},
+	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375}
+}
+reg_node(namer,'a',fixer)
+stoneworks.reg_recipe(namer,{{f1},{f1},{i}},i,19)
+stoneworks.reg_recipe(namer,{{f2},{i}},i,0)
+stoneworks.reg_recipe(namer,{{f1},{cc}},i,0)
+
 
 
 namer="stoneworks:arches_high" .. subname
