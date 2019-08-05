@@ -23,6 +23,20 @@ function cool_tree_support(in_)
 end
 
 
+function baked_clay_support(in_)
+	local baked_path = minetest.get_modpath('bakedclay')
+	if baked_path then
+		local gif_='baked_clay_'..in_..'.png'
+		stoneworks.register_arches_and_thin_wall('bakedclay_'..in_, 'bakedclay:'..in_,
+			{cracky = 3},
+			{gif_},
+			first2upper(in_),
+			in_,
+			default.node_sound_stone_defaults())
+	end
+end
+
+
 function stoneworks.reg_recipe(name_, rec, i, num)
 	minetest.register_craft({
 		output = name_,
@@ -862,6 +876,22 @@ cool_tree_support('larch')
 cool_tree_support('lemontree')
 cool_tree_support('mahogany')
 cool_tree_support('palm')
+
+baked_clay_support('black')
+baked_clay_support('blue')
+baked_clay_support('brown')
+baked_clay_support('cyan')
+baked_clay_support('dark_green')
+baked_clay_support('dark_grey')
+baked_clay_support('green')
+baked_clay_support('grey')
+baked_clay_support('magenta')
+baked_clay_support('orange')
+baked_clay_support('pink')
+baked_clay_support('red')
+baked_clay_support('violet')
+baked_clay_support('white')
+baked_clay_support('yellow')
 
 minetest.register_node("stoneworks:highironfence", {
 	description = "StoneWorks high ironfence",
