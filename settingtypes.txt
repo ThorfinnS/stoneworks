@@ -1,0 +1,9 @@
+# Adds all stoneworks nodes for woods from runs' Cool Trees mod
+cool_trees_support (Add Cool Trees support) bool true
+
+# Adds all stoneworks nodes for clay blocks from TenPlus1's Baked Clay mod
+bakedclay_support (Add Baked Clay support) bool true
+
+# Adds all stoneworks nodes for blocks from trees from Darkage mod
+darkage_support (Add Darkage support) bool true
+

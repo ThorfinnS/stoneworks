@@ -9,6 +9,28 @@ function first2upper(in_)
 	return (in_:gsub("^%l", in_.upper))
 end
 
+function mod_support(mod,subname, recipeitem, groups, images, description, junk, sounds)
+	local mod_path=minetest.get_modpath(mod)
+	if mod_path then 
+		if groups=='woodlike' or groups=='' then 
+			groups={snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3}
+		elseif groups=='stonelike' or groups=='s' then
+			groups={cracky = 3}
+		elseif groups=='sandstonelike' or groups=='ss' then
+			groups={cracky = 2}
+		elseif groups=='obsidianlike' or groups=='o' then
+			groups={cracky = 1, level = 2}
+		end
+		if sounds=='woodlike' or sounds=='w' then
+			sounds=default.node_sound_wood_defaults()
+		elseif sounds=='stonelike' or sounds=='s' then
+			sounds=default.node_sound_stone_defaults()
+		end
+		stoneworks.register_arches_and_thin_wall(mod..'_'..subname, recipeitem, groups, images, 
+			description, junk, sounds)
+	end
+end
+
 function cool_tree_support(in_)
 	local cool_path = minetest.get_modpath(in_)
 	if cool_path then
@@ -30,7 +52,7 @@ function baked_clay_support(in_)
 		stoneworks.register_arches_and_thin_wall('bakedclay_'..in_, 'bakedclay:'..in_,
 			{cracky = 3},
 			{gif_},
-			first2upper(in_),
+			first2upper(in_)..' Baked Clay',
 			in_,
 			default.node_sound_stone_defaults())
 	end
@@ -53,8 +75,11 @@ end
 
 function stoneworks.register_arches_and_thin_wall(subname, recipeitem, groups, images, 
 	description, junk, sounds)
+	
 
-function reg_node(namer,grouper,fixer)
+local function reg_node(namer,grouper,fixer)
+-- out('namer',namer)
+-- out('grouper',grouper)
 	local a, desc = 1, description
 	a=string.find(description, ' Arches')
 	if a~= nil then
@@ -66,31 +91,31 @@ function reg_node(namer,grouper,fixer)
 	elseif grouper=='w' then
 		groups.thin_wall = 1
 		desc=desc..' Thin Wall'
-	else
+	elseif grouper=='m' then
 		desc=desc..' Mini'
 	end
-		minetest.register_node(namer, {
-			description = desc,
-			drawtype = "nodebox",
-			tiles = images,
-			paramtype = "light",
-			paramtype2 = "facedir",
-			legacy_facedir_simple = true,
-			groups = groups,
-			is_ground_content = false,
-			sounds = sounds,
-			node_box = {
-				type = "fixed",
-				fixed = fixer
-			}
-		})
+	minetest.register_node(namer, {
+		description = desc,
+		drawtype = "nodebox",
+		tiles = images,
+		paramtype = "light",
+		paramtype2 = "facedir",
+		legacy_facedir_simple = true,
+		groups = groups,
+		is_ground_content = false,
+		sounds = sounds,
+		node_box = {
+			type = "fixed",
+			fixed = fixer
+		}
+	})
 end
 
-local i,n = "stoneworks:mini_" .. subname,''
+local i,n = "stoneworks:".. subname..'_mini',''
 local fixer = {
 	{-0.1875, -0.1875, -0.1875, 0.1875, 0.1875, 0.1875}
 	}
-reg_node(i,'i',fixer)
+reg_node(i,'m',fixer)
 minetest.register_craft({
 	type = "shapeless",
 	output = i.. ' 54',
@@ -138,7 +163,8 @@ local lo=namer
 
 namer="stoneworks:arches_lower_wall" .. subname
 fixer={
-	{-0.5, -0.5, -0.5, 0.5, -0.125, 0.5},
+	-- {-0.5, -0.5, -0.5, 0.5, -0.125, 0.5},
+	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5}
 }
 reg_node(namer,'a',fixer)
 stoneworks.reg_recipe(namer,{{i,i,i},{i,i,i},{i,i,i}},i,9)
@@ -147,11 +173,13 @@ local f1=namer
 
 namer="stoneworks:arches_low_wall" .. subname
 fixer={
-	{-0.5, -0.5, -0.5, 0.5, 0.125, 0.5},
+	-- {-0.5, -0.5, -0.5, 0.5, 0.125, 0.5},
+	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5}
 }
 reg_node(namer,'a',fixer)
 stoneworks.reg_recipe(namer,{{f1},{f1}},i,18)
 local f2=namer
+
 
 namer="stoneworks:thin_wall_lower" .. subname
 fixer={
@@ -866,32 +894,61 @@ stoneworks.register_arches_and_thin_wall("tinblock", "default:tinblock",
 		"Tin Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-cool_tree_support('birch')
-cool_tree_support('cherrytree')
-cool_tree_support('chestnuttree')
-cool_tree_support('clementinetree')
-cool_tree_support('ebony')
-cool_tree_support('jacaranda')
-cool_tree_support('larch')
-cool_tree_support('lemontree')
-cool_tree_support('mahogany')
-cool_tree_support('palm')
+if minetest.settings:get_bool("cool_trees_support") ~= false then
+	minetest.log('LOADING Cool Trees Support for Stoneworks')
+	cool_tree_support('birch')
+	cool_tree_support('cherrytree')
+	cool_tree_support('chestnuttree')
+	cool_tree_support('clementinetree')
+	cool_tree_support('ebony')
+	cool_tree_support('jacaranda')
+	cool_tree_support('larch')
+	cool_tree_support('lemontree')
+	cool_tree_support('mahogany')
+	cool_tree_support('palm')
+	minetest.log('LOADED Cool Trees Support for Stoneworks')
+end
 
-baked_clay_support('black')
-baked_clay_support('blue')
-baked_clay_support('brown')
-baked_clay_support('cyan')
-baked_clay_support('dark_green')
-baked_clay_support('dark_grey')
-baked_clay_support('green')
-baked_clay_support('grey')
-baked_clay_support('magenta')
-baked_clay_support('orange')
-baked_clay_support('pink')
-baked_clay_support('red')
-baked_clay_support('violet')
-baked_clay_support('white')
-baked_clay_support('yellow')
+if minetest.settings:get_bool("bakedclay_support") ~= false then
+	minetest.log('LOADING Baked Clay Support for Stoneworks')
+	baked_clay_support('black')
+	baked_clay_support('blue')
+	baked_clay_support('brown')
+	baked_clay_support('cyan')
+	baked_clay_support('dark_green')
+	baked_clay_support('dark_grey')
+	baked_clay_support('green')
+	baked_clay_support('grey')
+	baked_clay_support('magenta')
+	baked_clay_support('orange')
+	baked_clay_support('pink')
+	baked_clay_support('red')
+	baked_clay_support('violet')
+	baked_clay_support('white')
+	baked_clay_support('yellow')
+	minetest.log('LOADED Baked Clay Support for Stoneworks')
+end
+
+if minetest.settings:get_bool("darkage_support") ~= false then
+	minetest.log('LOADING Darkage Support for Stoneworks')
+	local mod,w,s,o='darkage','woodlike','stonelike','obsidianlike'
+-- mod_support(modname, subname, recipeitem, groups, images, description, junk, sounds)
+	mod_support(mod,'basalt_brick','darkage:basalt_brick',{cracky = 3, stone = 2},{'darkage_basalt_brick.png'},
+		'Basalt Brick','',s)
+	mod_support(mod,"stone_brick","darkage:stone_brick",s,{'darkage_stone_brick.png'},'Stone Brick','',s)
+	mod_support(mod,"marble","darkage:marble",{cracky = 3, stone = 1},{'darkage_marble.png'},'Marble','',s)
+	mod_support(mod,"cobble_with_plaster","darkage:cobble_with_plaster",{cracky=3, not_cuttable=1},
+		{"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_D.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_B.png)", 
+		"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_C.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_A.png)", 
+		"default_cobble.png", "darkage_chalk.png"},'Cobblestone With Plaster','',s)
+	mod_support(mod,"ors_brick","darkage:ors_brick",{cracky = 3, stone = 2},{'darkage_ors_brick.png'},
+		'Old Red Sandstone Brick','',s)
+	mod_support(mod,"chalked_bricks","darkage:chalked_bricks",{cracky = 2, stone = 1},{'darkage_chalked_bricks.png'},'Chalked Brick','',s)
+	mod_support(mod,"chalked_bricks_with_plaster","darkage:chalked_bricks_with_plaster",{cracky=3, not_cuttable=1},{"darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_D.png)", "darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_B.png)", 
+		"darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_C.png)", "darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_A.png)", 
+		"darkage_chalked_bricks.png", "darkage_chalk.png"},'Chalked Bricks with Plaster','',s)
+	minetest.log('LOADED Darkage Support for Stoneworks')
+end
 
 minetest.register_node("stoneworks:highironfence", {
 	description = "StoneWorks high ironfence",
