@@ -949,7 +949,7 @@ if minetest.settings:get_bool("darkage_support") ~= false then
 -- mod_support(modname, subname, recipeitem, groups, images, description, junk, sounds)
 	mod_support(mod,'basalt_brick','',{cracky = 3, stone = 2})
 	mod_support(mod,"stone_brick")
-	mod_support(mod,"marble")
+	mod_support(mod,"marble",'',{cracky = 3, stone = 1})
 	mod_support(mod,"cobble_with_plaster","darkage:cobble_with_plaster",{cracky=3, not_cuttable=1},
 		{"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_D.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_B.png)", 
 		"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_C.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_A.png)", 
@@ -961,6 +961,8 @@ if minetest.settings:get_bool("darkage_support") ~= false then
 		"darkage_chalked_bricks.png", "darkage_chalk.png"})
 	minetest.log('LOADED Darkage Support for Stoneworks')
 end
+
+
 
 minetest.register_node("stoneworks:highironfence", {
 	description = "StoneWorks high ironfence",
