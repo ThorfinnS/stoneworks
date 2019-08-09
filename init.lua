@@ -197,6 +197,7 @@ fixer={
 }
 reg_node(namer,'w',fixer)
 stoneworks.reg_recipe(namer,{{w1},{w1}},i,6)
+stoneworks.reg_recipe(namer,{{i,i,i},{i,i,i}},i,0)
 local w2=namer
 
 
