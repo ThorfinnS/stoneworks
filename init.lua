@@ -12,9 +12,22 @@ end
 function mod_support(mod,subname, recipeitem, groups, images, description, junk, sounds)
 	local mod_path=minetest.get_modpath(mod)
 	if mod_path then 
-		if groups=='woodlike' or groups=='' then 
+		if description=='' or description==nil then
+		-- str = string.gsub(" "..str, "%W%l", string.upper):sub(2)
+		-- string.gsub("banana", "a", "A"
+		description=string.gsub(" "..string.gsub(subname,'_',' '), "%W%l", string.upper):sub(2)
+			-- descripion=first2upper(subname)
+		end
+		if images=='' or images== nil then
+			images={mod..'_'..subname..'.png'}
+			minetest.log(images[1])
+		end
+		if recipeitem=='' or recipeitem==nil then
+			recipeitem=mod..':'..subname
+		end
+		if groups=='woodlike' or groups=='' or groups=='w' then 
 			groups={snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3}
-		elseif groups=='stonelike' or groups=='s' then
+		elseif groups=='stonelike' or groups=='s' or groups== nil then
 			groups={cracky = 3}
 		elseif groups=='sandstonelike' or groups=='ss' then
 			groups={cracky = 2}
@@ -23,7 +36,7 @@ function mod_support(mod,subname, recipeitem, groups, images, description, junk,
 		end
 		if sounds=='woodlike' or sounds=='w' then
 			sounds=default.node_sound_wood_defaults()
-		elseif sounds=='stonelike' or sounds=='s' then
+		elseif sounds=='stonelike' or sounds=='s' or sounds=='' or sounds==nil then
 			sounds=default.node_sound_stone_defaults()
 		end
 		stoneworks.register_arches_and_thin_wall(mod..'_'..subname, recipeitem, groups, images, 
@@ -934,20 +947,18 @@ if minetest.settings:get_bool("darkage_support") ~= false then
 	minetest.log('LOADING Darkage Support for Stoneworks')
 	local mod,w,s,o='darkage','woodlike','stonelike','obsidianlike'
 -- mod_support(modname, subname, recipeitem, groups, images, description, junk, sounds)
-	mod_support(mod,'basalt_brick','darkage:basalt_brick',{cracky = 3, stone = 2},{'darkage_basalt_brick.png'},
-		'Basalt Brick','',s)
-	mod_support(mod,"stone_brick","darkage:stone_brick",s,{'darkage_stone_brick.png'},'Stone Brick','',s)
-	mod_support(mod,"marble","darkage:marble",{cracky = 3, stone = 1},{'darkage_marble.png'},'Marble','',s)
+	mod_support(mod,'basalt_brick','',{cracky = 3, stone = 2})
+	mod_support(mod,"stone_brick")
+	mod_support(mod,"marble")
 	mod_support(mod,"cobble_with_plaster","darkage:cobble_with_plaster",{cracky=3, not_cuttable=1},
 		{"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_D.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_B.png)", 
 		"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_C.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_A.png)", 
 		"default_cobble.png", "darkage_chalk.png"},'Cobblestone With Plaster','',s)
-	mod_support(mod,"ors_brick","darkage:ors_brick",{cracky = 3, stone = 2},{'darkage_ors_brick.png'},
-		'Old Red Sandstone Brick','',s)
-	mod_support(mod,"chalked_bricks","darkage:chalked_bricks",{cracky = 2, stone = 1},{'darkage_chalked_bricks.png'},'Chalked Brick','',s)
+	mod_support(mod,"ors_brick","",{cracky = 3, stone = 2})
+	mod_support(mod,"chalked_bricks","darkage:chalked_bricks",{cracky = 2, stone = 1})
 	mod_support(mod,"chalked_bricks_with_plaster","darkage:chalked_bricks_with_plaster",{cracky=3, not_cuttable=1},{"darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_D.png)", "darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_B.png)", 
 		"darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_C.png)", "darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_A.png)", 
-		"darkage_chalked_bricks.png", "darkage_chalk.png"},'Chalked Bricks with Plaster','',s)
+		"darkage_chalked_bricks.png", "darkage_chalk.png"})
 	minetest.log('LOADED Darkage Support for Stoneworks')
 end
 
