@@ -954,7 +954,7 @@ if minetest.settings:get_bool("darkage_support") ~= false then
 		{"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_D.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_B.png)", 
 		"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_C.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_A.png)", 
 		"default_cobble.png", "darkage_chalk.png"},'Cobblestone With Plaster','',s)
-	mod_support(mod,"ors_brick","",{cracky = 3, stone = 2})
+	mod_support(mod,"ors_brick","",{cracky = 3, stone = 2},'','Old Red Sandstone Brick')
 	mod_support(mod,"chalked_bricks","darkage:chalked_bricks",{cracky = 2, stone = 1})
 	mod_support(mod,"chalked_bricks_with_plaster","darkage:chalked_bricks_with_plaster",{cracky=3, not_cuttable=1},{"darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_D.png)", "darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_B.png)", 
 		"darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_C.png)", "darkage_chalk.png^(darkage_chalked_bricks.png^[mask:darkage_plaster_mask_A.png)", 
