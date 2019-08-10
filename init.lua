@@ -10,37 +10,48 @@ function first2upper(in_)
 end
 
 function mod_support(mod,subname, recipeitem, groups, images, description, junk, sounds)
+	if subname==nil then
+		local i=string.find(mod,':',2)
+		if i~=nil then -- it's composite mod:node
+			subname=string.sub(mod,i+1)
+			mod=string.sub(mod,1,i-1)
+		else
+			minetest.log("warning","No node specified-"..mod)
+			return
+		end
+	end
 	local mod_path=minetest.get_modpath(mod)
 	if mod_path then 
 		if description=='' or description==nil then
-		-- str = string.gsub(" "..str, "%W%l", string.upper):sub(2)
-		-- string.gsub("banana", "a", "A"
 		description=string.gsub(" "..string.gsub(subname,'_',' '), "%W%l", string.upper):sub(2)
-			-- descripion=first2upper(subname)
 		end
 		if images=='' or images== nil then
 			images={mod..'_'..subname..'.png'}
-			minetest.log(images[1])
 		end
 		if recipeitem=='' or recipeitem==nil then
 			recipeitem=mod..':'..subname
 		end
-		if groups=='woodlike' or groups=='' or groups=='w' then 
+		if groups=='woodlike' or groups=='w' then 
 			groups={snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3}
-		elseif groups=='stonelike' or groups=='s' or groups== nil then
+		elseif groups=='stonelike' or groups=='s' or groups== nil or groups=='' then
 			groups={cracky = 3}
 		elseif groups=='sandstonelike' or groups=='ss' then
 			groups={cracky = 2}
 		elseif groups=='obsidianlike' or groups=='o' then
 			groups={cracky = 1, level = 2}
 		end
-		if sounds=='woodlike' or sounds=='w' then
+		if sounds=='woodlike' or sounds=='w' or sounds == 'wood' then
 			sounds=default.node_sound_wood_defaults()
 		elseif sounds=='stonelike' or sounds=='s' or sounds=='' or sounds==nil then
 			sounds=default.node_sound_stone_defaults()
 		end
-		stoneworks.register_arches_and_thin_wall(mod..'_'..subname, recipeitem, groups, images, 
-			description, junk, sounds)
+		if(minetest.registered_items[mod..':'..subname] ~= nil) then
+			minetest.log('....Registering nodes--'..mod..':'..subname)
+			stoneworks.register_arches_and_thin_wall(mod..'_'..subname, recipeitem, groups, images, 
+				description, junk, sounds)
+		else
+			minetest.log("warning","Not registered node-"..mod..':'..subname)
+		end
 	end
 end
 
@@ -948,7 +959,9 @@ if minetest.settings:get_bool("darkage_support") ~= false then
 	local mod,w,s,o='darkage','woodlike','stonelike','obsidianlike'
 -- mod_support(modname, subname, recipeitem, groups, images, description, junk, sounds)
 	mod_support(mod,'basalt_brick','',{cracky = 3, stone = 2})
-	mod_support(mod,"stone_brick")
+	-- mod_support("default:stonebrick",'',s,'default_stone_brick.png')
+	mod_support("darkage:stone_brick")
+	mod_support("darkage:gneiss")
 	mod_support(mod,"marble",'',{cracky = 3, stone = 1})
 	mod_support(mod,"cobble_with_plaster","darkage:cobble_with_plaster",{cracky=3, not_cuttable=1},
 		{"darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_D.png)", "darkage_chalk.png^(default_cobble.png^[mask:darkage_plaster_mask_B.png)", 
