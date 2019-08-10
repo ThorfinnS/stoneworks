@@ -570,7 +570,7 @@ fixer={
 	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-stoneworks.reg_recipe(namer,{{n,f1},{i,w1},{i,n}},i,14)
+stoneworks.reg_recipe(namer,{{i,f1},{i,w1}},i,14)
 local cci=namer
 
 
@@ -618,7 +618,7 @@ fixer={
 	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-stoneworks.reg_recipe(namer,{{n,f2},{i,w1},{i,n}},i,14)
+stoneworks.reg_recipe(namer,{{i,f2},{i,w1}},i,14)
 stoneworks.reg_recipe(namer,{{f1},{cci}},i,0)
 
 
