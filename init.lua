@@ -1,9 +1,9 @@
 -- [MOD] StoneWorks [stoneworks] (1.2) by TumeniNodes
 
-ts_sw = {}
+ts_stoneworks = {}
 
 -- Register stoneworks.
--- Node will be called ts_sw:arches_<subname>
+-- Node will be called ts_stoneworks:arches_<subname>
 
 function first2upper(in_)
 	return (in_:gsub("^%l", in_.upper))
@@ -47,7 +47,7 @@ function mod_support(mod,subname, recipeitem, groups, images, description, junk,
 		end
 		if(minetest.registered_items[mod..':'..subname] ~= nil) then
 			minetest.log('....Registering nodes--'..mod..':'..subname)
-			ts_sw.register_arches_and_thin_wall(mod..'_'..subname, recipeitem, groups, images, 
+			ts_stoneworks.register_arches_and_thin_wall(mod..'_'..subname, recipeitem, groups, images, 
 				description, junk, sounds)
 		else
 			minetest.log("warning","Not registered node-"..mod..':'..subname)
@@ -59,7 +59,7 @@ function cool_tree_support(in_)
 	local cool_path = minetest.get_modpath(in_)
 	if cool_path then
 		local gif_=in_..'_wood.png'
-		ts_sw.register_arches_and_thin_wall(in_, in_..':wood',
+		ts_stoneworks.register_arches_and_thin_wall(in_, in_..':wood',
 			{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 			{gif_},
 			first2upper(in_),
@@ -73,7 +73,7 @@ function baked_clay_support(in_)
 	local baked_path = minetest.get_modpath('bakedclay')
 	if baked_path then
 		local gif_='baked_clay_'..in_..'.png'
-		ts_sw.register_arches_and_thin_wall('bakedclay_'..in_, 'bakedclay:'..in_,
+		ts_stoneworks.register_arches_and_thin_wall('bakedclay_'..in_, 'bakedclay:'..in_,
 			{cracky = 3},
 			{gif_},
 			first2upper(in_)..' Baked Clay',
@@ -83,7 +83,7 @@ function baked_clay_support(in_)
 end
 
 
-function ts_sw.reg_recipe(name_, rec, i, num)
+function ts_stoneworks.reg_recipe(name_, rec, i, num)
 	minetest.register_craft({
 		output = name_,
 		recipe = rec
@@ -97,7 +97,7 @@ function ts_sw.reg_recipe(name_, rec, i, num)
 end
 
 
-function ts_sw.register_arches_and_thin_wall(subname, recipeitem, groups, images, 
+function ts_stoneworks.register_arches_and_thin_wall(subname, recipeitem, groups, images, 
 	description, junk, sounds)
 	
 
@@ -135,7 +135,7 @@ local function reg_node(namer,grouper,fixer)
 	})
 end
 
-local i,n = "ts_sw:".. subname..'_mini',''
+local i,n = "ts_stoneworks:".. subname..'_mini',''
 local fixer = {
 	{-0.1875, -0.1875, -0.1875, 0.1875, 0.1875, 0.1875}
 	}
@@ -147,7 +147,7 @@ minetest.register_craft({
 })
 
 
-local namer="ts_sw:thin_wall_high_arch" .. subname
+local namer="ts_stoneworks:thin_wall_high_arch" .. subname
 local fixer={
 	{-0.5, -0.0625, -0.1875, 0.5, 0.5, 0.1875},
 	{0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
@@ -162,11 +162,11 @@ local fixer={
 	{-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{i,i,i},{i,i,i},{i,n,i}},i,8)
+ts_stoneworks.reg_recipe(namer,{{i,i,i},{i,i,i},{i,n,i}},i,8)
 local hi=namer
 
 
-namer="ts_sw:thin_wall_low_arch" .. subname
+namer="ts_stoneworks:thin_wall_low_arch" .. subname
 fixer={
 	{-0.5, -0.0625, -0.1875, 0.5, 0.125, 0.1875},
 	{0.0625, -0.125, -0.1875, 0.5, -0.0625, 0.1875},
@@ -181,165 +181,165 @@ fixer={
 	{-0.5, -0.5, -0.1875, -0.4375, -0.3125, 0.1875},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{i,i,i},{i,n,i}},i,5)
+ts_stoneworks.reg_recipe(namer,{{i,i,i},{i,n,i}},i,5)
 local lo=namer
 
 
-namer="ts_sw:arches_lower_wall" .. subname
+namer="ts_stoneworks:arches_lower_wall" .. subname
 fixer={
 	-- {-0.5, -0.5, -0.5, 0.5, -0.125, 0.5},
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{i,i,i},{i,i,i},{i,i,i}},i,9)
+ts_stoneworks.reg_recipe(namer,{{i,i,i},{i,i,i},{i,i,i}},i,9)
 local f1=namer
 
 
-namer="ts_sw:arches_low_wall" .. subname
+namer="ts_stoneworks:arches_low_wall" .. subname
 fixer={
 	-- {-0.5, -0.5, -0.5, 0.5, 0.125, 0.5},
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{f1},{f1}},i,18)
+ts_stoneworks.reg_recipe(namer,{{f1},{f1}},i,18)
 local f2=namer
 
 
-namer="ts_sw:thin_wall_lower" .. subname
+namer="ts_stoneworks:thin_wall_lower" .. subname
 fixer={
 	{-0.5, -0.5, -0.1875, 0.5, -0.125, 0.1875}
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{i,i,i}},i,3)
+ts_stoneworks.reg_recipe(namer,{{i,i,i}},i,3)
 local w1=namer
-ts_sw.reg_recipe(f1,{{w1,w1,w1}},i,0)
+ts_stoneworks.reg_recipe(f1,{{w1,w1,w1}},i,0)
 
 
-namer="ts_sw:thin_wall_low" .. subname
+namer="ts_stoneworks:thin_wall_low" .. subname
 fixer={
 	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875}
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{w1},{w1}},i,6)
-ts_sw.reg_recipe(namer,{{i,i,i},{i,i,i}},i,0)
+ts_stoneworks.reg_recipe(namer,{{w1},{w1}},i,6)
+ts_stoneworks.reg_recipe(namer,{{i,i,i},{i,i,i}},i,0)
 local w2=namer
 
 
-namer="ts_sw:thin_wall_high" .. subname
+namer="ts_stoneworks:thin_wall_high" .. subname
 fixer={
 	{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875}
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{w1},{w1},{w1}},i,9)
-ts_sw.reg_recipe(namer,{{w2},{w1}},i,0)
-ts_sw.reg_recipe(namer,{{w1},{w2}},i,0)
+ts_stoneworks.reg_recipe(namer,{{w1},{w1},{w1}},i,9)
+ts_stoneworks.reg_recipe(namer,{{w2},{w1}},i,0)
+ts_stoneworks.reg_recipe(namer,{{w1},{w2}},i,0)
 local w3=namer
 
 
-namer="ts_sw:thin_wall_lower_quad" .. subname
+namer="ts_stoneworks:thin_wall_lower_quad" .. subname
 fixer={
 	{-0.1875, -0.5, -0.5, 0.1875, -0.125, 0.5},
 	{-0.5, -0.5, -0.1875, 0.5, -0.125, 0.1875},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{n,i,n},{i,i,i},{n,i,n}},i,5)
+ts_stoneworks.reg_recipe(namer,{{n,i,n},{i,i,i},{n,i,n}},i,5)
 local q1=namer
 
 
-namer="ts_sw:thin_wall_low_quad" .. subname
+namer="ts_stoneworks:thin_wall_low_quad" .. subname
 fixer={
 	{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.5},
 	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{q1},{q1}},i,10)
+ts_stoneworks.reg_recipe(namer,{{q1},{q1}},i,10)
 local q2=namer
 
 
-namer="ts_sw:thin_wall_high_quad" .. subname
+namer="ts_stoneworks:thin_wall_high_quad" .. subname
 fixer={
 	{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
 	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{q1},{q1},{q1}},i,15)
-ts_sw.reg_recipe(namer,{{q2},{q1}},i,0)
-ts_sw.reg_recipe(namer,{{q1},{q2}},i,0)
+ts_stoneworks.reg_recipe(namer,{{q1},{q1},{q1}},i,15)
+ts_stoneworks.reg_recipe(namer,{{q2},{q1}},i,0)
+ts_stoneworks.reg_recipe(namer,{{q1},{q2}},i,0)
 
 
-namer="ts_sw:thin_wall_high_low_quad" .. subname
+namer="ts_stoneworks:thin_wall_high_low_quad" .. subname
 fixer={
 	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
 	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.5},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{w1},{q1},{q1}},i,13)
-ts_sw.reg_recipe(namer,{{w1},{q2}},i,0)
+ts_stoneworks.reg_recipe(namer,{{w1},{q1},{q1}},i,13)
+ts_stoneworks.reg_recipe(namer,{{w1},{q2}},i,0)
 
 
-namer="ts_sw:thin_wall_lower_T" .. subname
+namer="ts_stoneworks:thin_wall_lower_T" .. subname
 fixer={
 	{-0.1875, -0.5, -0.5, 0.1875, -0.125, 0.1875},
 	{-0.5, -0.5, -0.1875, 0.5, -0.125, 0.1875},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{i,i,i},{n,i,n}},i,4)
+ts_stoneworks.reg_recipe(namer,{{i,i,i},{n,i,n}},i,4)
 local t1=namer
 
 
-namer="ts_sw:thin_wall_low_T" .. subname
+namer="ts_stoneworks:thin_wall_low_T" .. subname
 fixer={
 	{-0.1875, -0.5, -0.5, 0.1875, 0.125, 0.1875},
 	{-0.5, -0.5, -0.1875, 0.5, 0.125, 0.1875},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{t1},{t1}},i,8)
+ts_stoneworks.reg_recipe(namer,{{t1},{t1}},i,8)
 local t2=namer
 
 
-namer="ts_sw:thin_wall_high_T" .. subname
+namer="ts_stoneworks:thin_wall_high_T" .. subname
 fixer={
 	{-0.5, -0.5, -0.1875, 0.5, 0.5, 0.1875},
 	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.1875},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{t2},{t1}},i,12)
-ts_sw.reg_recipe(namer,{{t1},{t2}},i,0)
-ts_sw.reg_recipe(namer,{{t1},{t1},{t1}},i,0)
+ts_stoneworks.reg_recipe(namer,{{t2},{t1}},i,12)
+ts_stoneworks.reg_recipe(namer,{{t1},{t2}},i,0)
+ts_stoneworks.reg_recipe(namer,{{t1},{t1},{t1}},i,0)
 
 
-namer="ts_sw:thin_wall_lower_corner" .. subname
+namer="ts_stoneworks:thin_wall_lower_corner" .. subname
 fixer={
 	{-0.1875, -0.5, -0.1875, 0.5, -0.125, 0.1875},
 	{-0.1875, -0.5, -0.1875, 0.1875, -0.125, 0.5},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{i,n},{i,i}},i,3)
+ts_stoneworks.reg_recipe(namer,{{i,n},{i,i}},i,3)
 local c1=namer
 
 
-namer="ts_sw:thin_wall_low_corner" .. subname
+namer="ts_stoneworks:thin_wall_low_corner" .. subname
 fixer={
 	{-0.1875, -0.5, -0.1875, 0.5, 0.125, 0.1875},
 	{-0.1875, -0.5, -0.1875, 0.1875, 0.125, 0.5},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{c1},{c1}},i,6)
+ts_stoneworks.reg_recipe(namer,{{c1},{c1}},i,6)
 local c2=namer
 
 
-namer="ts_sw:thin_wall_high_corner" .. subname
+namer="ts_stoneworks:thin_wall_high_corner" .. subname
 fixer={
 	{-0.5, -0.5, -0.1875, 0.1875, 0.5, 0.1875},
 	{-0.1875, -0.5, -0.5, 0.1875, 0.5, 0.1875},
 }
 reg_node(namer,'w',fixer)
-ts_sw.reg_recipe(namer,{{c1},{c1},{c1}},i,9)
-ts_sw.reg_recipe(namer,{{c2},{c1}},i,0)
-ts_sw.reg_recipe(namer,{{c1},{c2}},i,0)
+ts_stoneworks.reg_recipe(namer,{{c1},{c1},{c1}},i,9)
+ts_stoneworks.reg_recipe(namer,{{c2},{c1}},i,0)
+ts_stoneworks.reg_recipe(namer,{{c1},{c2}},i,0)
 
 
-namer="ts_sw:arches_low_quad" .. subname
+namer="ts_stoneworks:arches_low_quad" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
@@ -364,11 +364,11 @@ fixer={
 	{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{i,n,i},{n,f1,n},{i,n,i}},i,13)
+ts_stoneworks.reg_recipe(namer,{{i,n,i},{n,f1,n},{i,n,i}},i,13)
 local qa1=namer
 
 
-namer="ts_sw:arches_low_corner" .. subname
+namer="ts_stoneworks:arches_low_corner" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
@@ -393,10 +393,10 @@ fixer={
 	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{n,i},{i,qa1}},i,15)
+ts_stoneworks.reg_recipe(namer,{{n,i},{i,qa1}},i,15)
 
 
-namer="ts_sw:arches_low_T" .. subname
+namer="ts_stoneworks:arches_low_T" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
@@ -421,10 +421,10 @@ fixer={
 	{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{i,qa1}},i,14)
+ts_stoneworks.reg_recipe(namer,{{i,qa1}},i,14)
 
 
-namer="ts_sw:arches_high_quad" .. subname
+namer="ts_stoneworks:arches_high_quad" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
@@ -449,11 +449,11 @@ fixer={
 	{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{f1},{qa1}},i,22)
+ts_stoneworks.reg_recipe(namer,{{f1},{qa1}},i,22)
 local qa2=namer
 
 
-namer="ts_sw:arches_high_corner" .. subname
+namer="ts_stoneworks:arches_high_corner" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
@@ -478,10 +478,10 @@ fixer={
 	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{n,i},{i,qa2}},i,24)
+ts_stoneworks.reg_recipe(namer,{{n,i},{i,qa2}},i,24)
 
 
-namer="ts_sw:arches_low" .. subname
+namer="ts_stoneworks:arches_low" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
@@ -496,11 +496,11 @@ fixer={
 	{-0.5, -0.5, -0.5, -0.4375, -0.3125, 0.5},
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{lo,lo,lo}},i,15)
-ts_sw.reg_recipe(namer,{{i,qa1,i}},i,0)
+ts_stoneworks.reg_recipe(namer,{{lo,lo,lo}},i,15)
+ts_stoneworks.reg_recipe(namer,{{i,qa1,i}},i,0)
 
 
-namer="ts_sw:arches_high_T" .. subname
+namer="ts_stoneworks:arches_high_T" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, -0.0625},
@@ -525,10 +525,10 @@ fixer={
 	{-0.5, -0.125, 0.0625, -0.0625, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{i,qa2}},i,23)
+ts_stoneworks.reg_recipe(namer,{{i,qa2}},i,23)
 
 
-namer="ts_sw:arches_low_cove" .. subname
+namer="ts_stoneworks:arches_low_cove" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5}, --top slice
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5}, --2nd slice
@@ -538,10 +538,10 @@ fixer={
 	{0.4375, -0.5, -0.5, 0.5, -0.4375, 0.5},--6th slice
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{f1},{w1}},i,12)
+ts_stoneworks.reg_recipe(namer,{{f1},{w1}},i,12)
 
 
-namer="ts_sw:arches_low_cove_corner_outside" .. subname
+namer="ts_stoneworks:arches_low_cove_corner_outside" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
 	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
@@ -551,10 +551,10 @@ fixer={
 	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{f1},{i}},i,10)
+ts_stoneworks.reg_recipe(namer,{{f1},{i}},i,10)
 local cco=namer
 
-namer="ts_sw:arches_low_cove_corner_inside" .. subname
+namer="ts_stoneworks:arches_low_cove_corner_inside" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.125, 0.5},
 	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
@@ -570,11 +570,11 @@ fixer={
 	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{i,f1},{i,w1}},i,14)
+ts_stoneworks.reg_recipe(namer,{{i,f1},{i,w1}},i,14)
 local cci=namer
 
 
-namer="ts_sw:arches_high_cove" .. subname
+namer="ts_stoneworks:arches_high_cove" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},--1
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},--2
@@ -584,11 +584,11 @@ fixer={
 	{0.4375, -0.5, -0.5, 0.5, -0.4375, 0.5},--6
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{f1},{f1},{w1}},i,21)
-ts_sw.reg_recipe(namer,{{f2},{w1}},i,0)
+ts_stoneworks.reg_recipe(namer,{{f1},{f1},{w1}},i,21)
+ts_stoneworks.reg_recipe(namer,{{f2},{w1}},i,0)
 
 
-namer="ts_sw:arches_high_cove_corner_outside" .. subname
+namer="ts_stoneworks:arches_high_cove_corner_outside" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
 	{-0.5, -0.125, -0.5, -0.0625, -0.0625, -0.0625},
@@ -598,11 +598,11 @@ fixer={
 	{-0.5, -0.5, -0.5, -0.4375, -0.3125, -0.4375}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{f1},{f1},{i}},i,19)
-ts_sw.reg_recipe(namer,{{f2},{i}},i,0)
-ts_sw.reg_recipe(namer,{{f1},{cco}},i,0)
+ts_stoneworks.reg_recipe(namer,{{f1},{f1},{i}},i,19)
+ts_stoneworks.reg_recipe(namer,{{f2},{i}},i,0)
+ts_stoneworks.reg_recipe(namer,{{f1},{cco}},i,0)
 
-namer="ts_sw:arches_high_cove_corner_inside" .. subname
+namer="ts_stoneworks:arches_high_cove_corner_inside" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
 	{0.3125, -0.3125, -0.5, 0.5, -0.1875, 0.5},
@@ -618,11 +618,11 @@ fixer={
 	{-0.5, -0.125, 0.0625, 0.5, -0.0625, 0.5}
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{i,f2},{i,w1}},i,14)
-ts_sw.reg_recipe(namer,{{f1},{cci}},i,0)
+ts_stoneworks.reg_recipe(namer,{{i,f2},{i,w1}},i,14)
+ts_stoneworks.reg_recipe(namer,{{f1},{cci}},i,0)
 
 
-namer="ts_sw:arches_high" .. subname
+namer="ts_stoneworks:arches_high" .. subname
 fixer={
 	{-0.5, -0.0625, -0.5, 0.5, 0.5, 0.5},
 	{0.0625, -0.125, -0.5, 0.5, -0.0625, 0.5},
@@ -637,8 +637,8 @@ fixer={
 	{-0.5, -0.5, -0.5, -0.4375, -0.3125, 0.5},
 }
 reg_node(namer,'a',fixer)
-ts_sw.reg_recipe(namer,{{hi,hi,hi}},i,24)
-ts_sw.reg_recipe(namer,{{i,qa2,i}},i,0)
+ts_stoneworks.reg_recipe(namer,{{hi,hi,hi}},i,24)
+ts_stoneworks.reg_recipe(namer,{{i,qa2,i}},i,0)
 
 
 --turn back to blocks
@@ -660,259 +660,259 @@ end
 
 
 -- Register arches and thin_wall
-ts_sw.register_arches_and_thin_wall("wood", "default:wood",
+ts_stoneworks.register_arches_and_thin_wall("wood", "default:wood",
 		{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 		{"default_wood.png"},
 		"Wooden Arches",
 		"Wooden Thin Wall",
 		default.node_sound_wood_defaults())
 
-ts_sw.register_arches_and_thin_wall("junglewood", "default:junglewood",
+ts_stoneworks.register_arches_and_thin_wall("junglewood", "default:junglewood",
 		{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 		{"default_junglewood.png"},
 		"Junglewood Arches",
 		"Junglewood Thin Wall",
 		default.node_sound_wood_defaults())
 
-ts_sw.register_arches_and_thin_wall("pine_wood", "default:pine_wood",
+ts_stoneworks.register_arches_and_thin_wall("pine_wood", "default:pine_wood",
 		{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 		{"default_pine_wood.png"},
 		"Pine Wood Arches",
 		"Pine Wood Thin Wall",
 		default.node_sound_wood_defaults())
 
-ts_sw.register_arches_and_thin_wall("acacia_wood", "default:acacia_wood",
+ts_stoneworks.register_arches_and_thin_wall("acacia_wood", "default:acacia_wood",
 		{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 		{"default_acacia_wood.png"},
 		"Acacia Wood Arches",
 		"Acacia Wood Thin Wall",
 		default.node_sound_wood_defaults())
 
-ts_sw.register_arches_and_thin_wall("aspen_wood", "default:aspen_wood",
+ts_stoneworks.register_arches_and_thin_wall("aspen_wood", "default:aspen_wood",
 		{snappy = 2, choppy = 2, oddly_breakable_by_hand = 2, flammable = 3},
 		{"default_aspen_wood.png"},
 		"Aspen Wood Arches",
 		"Aspen Wood Thin Wall",
 		default.node_sound_wood_defaults())
 
-ts_sw.register_arches_and_thin_wall("brick", "default:brick",
+ts_stoneworks.register_arches_and_thin_wall("brick", "default:brick",
 		{cracky = 3},
 		{"default_brick.png"},
 		"Brick Arches",
 		"Brick Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("clay", "default:clay",
+ts_stoneworks.register_arches_and_thin_wall("clay", "default:clay",
 		{cracky = 3},
 		{"default_clay.png"},
 		"Clay Arches",
 		"Clay Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("stone", "default:stone",
+ts_stoneworks.register_arches_and_thin_wall("stone", "default:stone",
 		{cracky = 3},
 		{"default_stone.png"},
 		"Stone Arches",
 		"Stone Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("stonebrick", "default:stonebrick",
+ts_stoneworks.register_arches_and_thin_wall("stonebrick", "default:stonebrick",
 		{cracky = 3},
 		{"default_stone_brick.png"},
 		"Stone Brick Arches",
 		"Stone Brick Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("stone_block", "default:stone_block",
+ts_stoneworks.register_arches_and_thin_wall("stone_block", "default:stone_block",
 		{cracky = 3},
 		{"default_stone_block.png"},
 		"Stone Block Arches",
 		"Stone Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("cobble", "default:cobble",
+ts_stoneworks.register_arches_and_thin_wall("cobble", "default:cobble",
 		{cracky = 3},
 		{"default_cobble.png"},
 		"Cobblestone Arches",
 		"Cobblestone Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("mossycobble", "default:mossycobble",
+ts_stoneworks.register_arches_and_thin_wall("mossycobble", "default:mossycobble",
 		{cracky = 3},
 		{"default_mossycobble.png"},
 		"Mossy Cobblestone Arches",
 		"Mossy Cobblestone Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("desert_cobble", "default:desert_cobble",
+ts_stoneworks.register_arches_and_thin_wall("desert_cobble", "default:desert_cobble",
 		{cracky = 3},
 		{"default_desert_cobble.png"},
 		"Desert Cobble Arches",
 		"Desert Cobble Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("desert_stone", "default:desert_stone",
+ts_stoneworks.register_arches_and_thin_wall("desert_stone", "default:desert_stone",
 		{cracky = 3},
 		{"default_desert_stone.png"},
 		"Desertstone Arches",
 		"Desertstone Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("desert_stonebrick", "default:desert_stonebrick",
+ts_stoneworks.register_arches_and_thin_wall("desert_stonebrick", "default:desert_stonebrick",
 		{cracky = 3},
 		{"default_desert_stone_brick.png"},
 		"Desertstone Brick Arches",
 		"Desertstone Brick Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("desert_stone_block", "default:desert_stone_block",
+ts_stoneworks.register_arches_and_thin_wall("desert_stone_block", "default:desert_stone_block",
 		{cracky = 3},
 		{"default_desert_stone_block.png"},
 		"Desertstone Block Arches",
 		"Desertstone Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("desert_sandstone", "default:desert_sandstone",
+ts_stoneworks.register_arches_and_thin_wall("desert_sandstone", "default:desert_sandstone",
 		{crumbly = 1, cracky = 3},
 		{"default_desert_sandstone.png"},
 		"Desert Sandstone Arches",
 		"Desert Sandstone Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("desert_sandstone_brick", "default:desert_sandstone_brick",
+ts_stoneworks.register_arches_and_thin_wall("desert_sandstone_brick", "default:desert_sandstone_brick",
 		{cracky = 2},
 		{"default_desert_sandstone_brick.png"},
 		"Desert Sandstone Brick Arches",
 		"Desert Sandstone Brick Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("desert_sandstone_block", "default:desert_sandstone_block",
+ts_stoneworks.register_arches_and_thin_wall("desert_sandstone_block", "default:desert_sandstone_block",
 		{cracky = 2},
 		{"default_desert_sandstone_block.png"},
 		"Desert Sandstone Block Arches",
 		"Desert Sandstone Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("sandstone", "default:sandstone",
+ts_stoneworks.register_arches_and_thin_wall("sandstone", "default:sandstone",
 		{crumbly = 1, cracky = 3},
 		{"default_sandstone.png"},
 		"Sandstone Arches",
 		"Sandstone Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("sandstonebrick", "default:sandstonebrick",
+ts_stoneworks.register_arches_and_thin_wall("sandstonebrick", "default:sandstonebrick",
 		{cracky = 2},
 		{"default_sandstone_brick.png"},
 		"Sandstone Brick Arches",
 		"Sandstone Brick Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("sandstone_block", "default:sandstone_block",
+ts_stoneworks.register_arches_and_thin_wall("sandstone_block", "default:sandstone_block",
 		{cracky = 2},
 		{"default_sandstone_block.png"},
 		"Sandstone Block Arches",
 		"Sandstone Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("silver_sandstone", "default:silver_sandstone",
+ts_stoneworks.register_arches_and_thin_wall("silver_sandstone", "default:silver_sandstone",
 		{crumbly = 1, cracky = 3},
 		{"default_silver_sandstone.png"},
 		"Silver Sandstone Arches",
 		"Silver Sandstone Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("silver_sandstone_brick", "default:silver_sandstone_brick",
+ts_stoneworks.register_arches_and_thin_wall("silver_sandstone_brick", "default:silver_sandstone_brick",
 		{cracky = 2},
 		{"default_silver_sandstone_brick.png"},
 		"Silver Sandstone Brick Arches",
 		"Silver Sandstone Brick Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("silver_sandstone_block", "default:silver_sandstone_block",
+ts_stoneworks.register_arches_and_thin_wall("silver_sandstone_block", "default:silver_sandstone_block",
 		{cracky = 2},
 		{"default_silver_sandstone_block.png"},
 		"Silver Sandstone Block Arches",
 		"Silver Sandstone Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("obsidian", "default:obsidian",
+ts_stoneworks.register_arches_and_thin_wall("obsidian", "default:obsidian",
 		{cracky = 1, level = 2},
 		{"default_obsidian.png"},
 		"Obsidian Arches",
 		"Obsidian Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("obsidianbrick", "default:obsidianbrick",
+ts_stoneworks.register_arches_and_thin_wall("obsidianbrick", "default:obsidianbrick",
 		{cracky = 1, level = 2},
 		{"default_obsidian_brick.png"},
 		"Obsidian Brick Arches",
 		"Obsidian Brick Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("obsidian_block", "default:obsidian_block",
+ts_stoneworks.register_arches_and_thin_wall("obsidian_block", "default:obsidian_block",
 		{cracky = 1, level = 2},
 		{"default_obsidian_block.png"},
 		"Obsidian Block Arches",
 		"Obsidian Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("bronzeblock", "default:bronzeblock",
+ts_stoneworks.register_arches_and_thin_wall("bronzeblock", "default:bronzeblock",
 		{cracky = 1, level = 2},
 		{"default_bronze_block.png"},
 		"Bronze Block Arches",
 		"Bronze Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("coalblock", "default:coalblock",
+ts_stoneworks.register_arches_and_thin_wall("coalblock", "default:coalblock",
 		{cracky = 1, level = 2},
 		{"default_coal_block.png"},
 		"Coal Block Arches",
 		"Coal Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("copperblock", "default:copperblock",
+ts_stoneworks.register_arches_and_thin_wall("copperblock", "default:copperblock",
 		{cracky = 1, level = 2},
 		{"default_copper_block.png"},
 		"Copper Block Arches",
 		"Copper Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("diamondblock", "default:diamondblock",
+ts_stoneworks.register_arches_and_thin_wall("diamondblock", "default:diamondblock",
 		{cracky = 1, level = 2},
 		{"default_diamond_block.png"},
 		"Diamond Block Arches",
 		"Diamond Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("goldblock", "default:goldblock",
+ts_stoneworks.register_arches_and_thin_wall("goldblock", "default:goldblock",
 		{cracky = 1, level = 2},
 		{"default_gold_block.png"},
 		"Gold Block Arches",
 		"Gold Block Thin Wall",
 		default.node_sound_stone_defaults())
 
---[[ts_sw.register_arches_and_thin_wall("ironblock", "default:ironblock",
+--[[ts_stoneworks.register_arches_and_thin_wall("ironblock", "default:ironblock",
 		{cracky = 1, level = 2},
 		{"default_iron_block.png"},
 		"Iron Block Arches",
 		"Iron Block Thin Wall",
 		default.node_sound_stone_defaults())]]--
 
-ts_sw.register_arches_and_thin_wall("meseblock", "default:meseblock",
+ts_stoneworks.register_arches_and_thin_wall("meseblock", "default:meseblock",
 		{cracky = 1, level = 2},
 		{"default_mese_block.png"},
 		"Mese Block Arches",
 		"Mese Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("steelblock", "default:steelblock",
+ts_stoneworks.register_arches_and_thin_wall("steelblock", "default:steelblock",
 		{cracky = 1, level = 2},
 		{"default_steel_block.png"},
 		"Steel Block Arches",
 		"Steel Block Thin Wall",
 		default.node_sound_stone_defaults())
 
-ts_sw.register_arches_and_thin_wall("tinblock", "default:tinblock",
+ts_stoneworks.register_arches_and_thin_wall("tinblock", "default:tinblock",
 		{cracky = 1, level = 2},
 		{"default_tin_block.png"},
 		"Tin Block Arches",
@@ -977,7 +977,7 @@ end
 
 
 
-minetest.register_node("ts_sw:highironfence", {
+minetest.register_node("ts_stoneworks:highironfence", {
 	description = "StoneWorks high ironfence",
 	drawtype = "nodebox",
 	tiles = {"stoneworks_ironfence_side.png", "stoneworks_ironfence_side.png",
@@ -998,7 +998,7 @@ minetest.register_node("ts_sw:highironfence", {
 	}
 })
 
-minetest.register_node("ts_sw:lowironfence", {
+minetest.register_node("ts_stoneworks:lowironfence", {
 	description = "StoneWorks low ironfence",
 	drawtype = "nodebox",
 	tiles = {"stoneworks_ironfence_side.png", "stoneworks_ironfence_side.png",
@@ -1019,7 +1019,7 @@ minetest.register_node("ts_sw:lowironfence", {
 	}
 })
 
-minetest.register_node("ts_sw:highlowironfence", {
+minetest.register_node("ts_stoneworks:highlowironfence", {
 	description = "StoneWorks Highlow ironfence",
 	drawtype = "nodebox",
 	tiles = {"stoneworks_ironfence_side.png", "stoneworks_ironfence_side.png",
